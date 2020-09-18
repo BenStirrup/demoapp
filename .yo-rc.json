@@ -1,7 +1,6 @@
 {
   "generator-rn-toolbox": {
     "lint": true,
-    "jest": true,
-    "vscode": true
+    "jest": true
   }
 }
