@@ -1,0 +1,19 @@
+name: Build Android
+on: workflow_dispatch
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install npm dependencies
+        run: |
+          yarn --frozen-lockfile
+      - name: Build Android release
+        run: |
+          cd android && ./gradlew bundleRelease
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-release.aab
+          path: android/app/build/outputs/bundle/release/
