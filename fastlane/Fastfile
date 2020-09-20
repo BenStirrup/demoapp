@@ -1,0 +1,16 @@
+lane :build_bundle do |options|
+    # Bundle the app
+    gradle(
+        task: 'bundle',
+        project_dir: "android/"
+    )
+end
+
+lane :release_to_play_store do |options|
+    # Upload to Play Store's Internal Testing
+    upload_to_play_store(
+        package_name: 'com.demoappculture',
+        track: "internal",
+        aab: "./android/app/build/outputs/bundle/release/app-release.aab"
+    )
+end
