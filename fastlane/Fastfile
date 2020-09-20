@@ -1,0 +1,22 @@
+lane :delete_builds do |options|
+    gradle(
+        task: "clean",
+        project_dir: "android/"
+    )
+end
+
+lane :build_bundle do |options|
+    gradle(
+        task: 'bundle',
+        build_type: 'Release',
+        project_dir: "android/"
+    )
+end
+
+lane :release_to_playstore_internal_testing do |options|
+    upload_to_play_store(
+        package_name: 'com.demoappculture',
+        track: "internal",
+        aab: "./android/app/build/outputs/bundle/release/app-release.aab"
+    )
+end
