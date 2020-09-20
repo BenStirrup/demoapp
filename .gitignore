@@ -61,3 +61,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Publish
+google-private-key.json
+demoapp_keystore.jks
+private_key.pepk
