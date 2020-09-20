@@ -132,8 +132,8 @@ android {
         applicationId "com.demoapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode System.env.GITHUB_RUN_NUMBER ? System.env.GITHUB_RUN_NUMBER.toInteger() : 1
+        versionName System.getenv("VERSION_NAME") ?: "0.1.0"
     }
     splits {
         abi {
