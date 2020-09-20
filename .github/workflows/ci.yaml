@@ -1,20 +1,20 @@
-name: Tests
-on:
-  push:
-    branches:
-      - master
+# name: Tests
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          yarn --frozen-lockfile
-      - name: ESLint
-        run: |
-          yarn test:lint
-      - name: Unit tests
-        run: |
-          yarn test:unit
+# jobs:
+#   tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Install npm dependencies
+#         run: |
+#           yarn --frozen-lockfile
+#       - name: ESLint
+#         run: |
+#           yarn test:lint
+#       - name: Unit tests
+#         run: |
+#           yarn test:unit

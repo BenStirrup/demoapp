@@ -129,11 +129,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.demoapp"
+        applicationId "com.demoappculture"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode System.env.GITHUB_RUN_NUMBER ? System.env.GITHUB_RUN_NUMBER.toInteger() : 1
+        versionName System.getenv("VERSION_NAME") ?: "0.1.0"
     }
     splits {
         abi {
@@ -150,6 +150,15 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('keystore.jks')
+            storePassword "NoblestFertileSelma"
+            keyAlias "keystore"
+            keyPassword "RhodesiaMoneyTaste"
+            // storePassword System.getenv("STORE_PASSWORD")
+            // keyAlias System.getenv("KEY_ALIAS")
+            // keyPassword System.getenv("KEY_PASSWORD")
+        }
     }
     buildTypes {
         debug {
@@ -158,7 +167,8 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
