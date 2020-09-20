@@ -1,4 +1,4 @@
-package com.demoapp;
+package com.demoappculture;
 
 import com.facebook.react.ReactActivity;
 
